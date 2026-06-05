@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lily & Fabs Souvenir — Leve Curitiba com Você</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=Dancing+Script:wght@600&family=IM+Fell+English:ital@1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --preto:#0C0C0A;
+  --preto-suave:#141412;
+  --preto-card:#1A1A17;
+  --borda:#2A2A26;
+  --branco:#F5F3EE;
+  --branco-puro:#FFFFFF;
+  --ouro:#C9A84C;
+  --ouro-claro:#E8C97A;
+  --creme:#E8E0CC;
+  --cinza:#8A8A82;
+  --cinza-claro:#B5B5AD;
+  --verde-escuro:#1A2E12;
+  --nav-h:68px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--preto);color:var(--branco);line-height:1.7;overflow-x:hidden}
+
+/* TIPOGRAFIA */
+.script{font-family:'Dancing Script',cursive}
+.logo-amp{font-family:'IM Fell English',serif;font-style:italic;color:var(--ouro);font-size:1.15em;letter-spacing:-0.01em;display:inline-block;transform:translateY(0.02em)}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;line-height:1.15;font-weight:300}
+h1{font-size:clamp(3rem,7vw,6rem)}
+h2{font-size:clamp(2rem,4vw,3.2rem)}
+h3{font-size:1.3rem;font-weight:400}
+
+/* NAV */
+nav{
+  position:fixed;top:0;width:100%;z-index:100;
+  height:var(--nav-h);
+  background:rgba(12,12,10,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--borda);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none}
+.nav-logo-circle{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--preto-card);
+  border:1px solid var(--borda);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;
+}
+.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--branco);font-weight:300;letter-spacing:0.02em}
+.nav-logo-text span{font-family:'Dancing Script',cursive;color:var(--ouro);font-size:0.85rem;display:block;line-height:1;margin-top:-2px}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--cinza);font-size:0.82rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--branco)}
+.nav-wpp{
+  background:transparent;color:var(--ouro) !important;
+  border:1px solid var(--ouro);padding:0.45rem 1.1rem;border-radius:2px;
+  transition:all 0.2s !important;font-size:0.78rem !important;letter-spacing:0.1em !important;
+}
+.nav-wpp:hover{background:var(--ouro) !important;color:var(--preto) !important}
+
+/* BOTÕES */
+.btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.85rem 2rem;border-radius:2px;
+  font-family:'DM Sans',sans-serif;font-weight:400;font-size:0.85rem;
+  text-decoration:none;cursor:pointer;border:none;
+  transition:all 0.25s;letter-spacing:0.1em;text-transform:uppercase;
+}
+.btn-ouro{background:var(--ouro);color:var(--preto)}
+.btn-ouro:hover{background:var(--ouro-claro);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--branco);border:1px solid var(--borda)}
+.btn-outline:hover{border-color:var(--ouro);color:var(--ouro)}
+.btn-wpp{background:#25D366;color:var(--preto-card)}
+.btn-wpp:hover{background:#1ebe5d;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--cinza);border:1px solid var(--borda);padding:0.6rem 1.2rem;font-size:0.78rem}
+.btn-ghost:hover{color:var(--branco);border-color:var(--cinza)}
+
+/* SEÇÃO */
+section{padding:7rem 5%}
+.section-label{
+  font-size:0.72rem;font-weight:400;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ouro);
+  margin-bottom:1rem;display:block;
+}
+.section-heading{color:var(--branco);margin-bottom:1.5rem}
+.section-heading em{font-style:italic;color:var(--ouro)}
+
+/* DIVISOR */
+.divider{
+  width:40px;height:1px;background:var(--ouro);
+  margin:0 0 2.5rem;
+}
+
+/* ===== HERO ===== */
+#home{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding-top:var(--nav-h);
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:0.4;pointer-events:none;
+}
+.hero-logo-area{
+  margin-bottom:2.5rem;
+  animation:fadeUp 1s ease both;
+}
+.hero-logo-circle{
+  width:140px;height:140px;border-radius:50%;
+  background:var(--preto-card);
+  border:1px solid var(--borda);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.5rem;
+  margin:0 auto 1.5rem;
+  position:relative;
+}
+.hero-logo-circle::before{
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.2);
+}
+.hero-logo-circle::after{
+  content:'';position:absolute;inset:-16px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.08);
+}
+.hero-grupo{font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cinza);margin-bottom:0.2rem}
+.hero-brand{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:300;letter-spacing:-0.02em;color:var(--branco);line-height:1}
+.hero-brand em{font-style:italic;color:var(--ouro)}
+.hero-souvenir{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--ouro-claro);margin-top:0.2rem;display:block}
+.hero-tagline{
+  font-size:clamp(0.85rem,2vw,1rem);color:var(--cinza-claro);
+  letter-spacing:0.15em;text-transform:uppercase;
+  margin:2rem auto;max-width:420px;line-height:2;
+  animation:fadeUp 1s ease 0.2s both;
+}
+.hero-tagline strong{color:var(--branco);font-weight:400}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 1s ease 0.3s both}
+.hero-stores{
+  display:flex;gap:2.5rem;justify-content:center;
+  margin-top:3rem;flex-wrap:wrap;
+  animation:fadeUp 1s ease 0.4s both;
+}
+.hero-store{
+  display:flex;align-items:center;gap:0.6rem;
+  font-size:0.78rem;color:var(--cinza);letter-spacing:0.08em;
+}
+.hero-store-line{width:20px;height:1px;background:var(--ouro);opacity:0.5}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+  animation:bobbing 2.5s ease-in-out infinite;
+}
+.hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,var(--ouro))}
+.hero-scroll-text{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--cinza);transform:rotate(90deg) translateX(8px)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bobbing{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+/* ===== CATÁLOGO ===== */
+#catalogo{background:var(--preto-suave);border-top:1px solid var(--borda)}
+.cat-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;margin-bottom:3rem}
+.cat-filters{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:2rem}
+.cat-filter{
+  padding:0.45rem 1rem;border-radius:2px;
+  border:1px solid var(--borda);
+  background:transparent;color:var(--cinza);
+  font-size:0.78rem;font-weight:400;cursor:pointer;
+  transition:all 0.2s;font-family:'DM Sans',sans-serif;
+  letter-spacing:0.06em;text-transform:uppercase;
+}
+.cat-filter.active,.cat-filter:hover{border-color:var(--ouro);color:var(--ouro);background:rgba(201,168,76,0.06)}
+.cat-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1px;background:var(--borda);
+}
+.produto-card{
+  background:var(--preto);
+  transition:background 0.3s;cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.produto-card:hover{background:var(--preto-card)}
+.produto-img{
+  width:100%;height:220px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4.5rem;
+  border-bottom:1px solid var(--borda);
+  transition:all 0.3s;position:relative;overflow:hidden;
+  background:var(--preto-card);
+}
+.produto-img::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(201,168,76,0.05) 0%,transparent 70%);
+  opacity:0;transition:opacity 0.3s;
+}
+.produto-card:hover .produto-img::after{opacity:1}
+.produto-info{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.produto-cat{font-size:0.7rem;font-weight:400;text-transform:uppercase;letter-spacing:0.15em;color:var(--ouro);margin-bottom:0.5rem}
+.produto-nome{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:400;color:var(--branco);margin-bottom:0.5rem;line-height:1.3}
+.produto-desc{font-size:0.82rem;color:var(--cinza);margin-bottom:1.2rem;line-height:1.7;flex:1}
+.produto-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:1rem;border-top:1px solid var(--borda)}
+.produto-preco{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--ouro-claro)}
+.produto-btn{
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cinza);border-bottom:1px solid var(--borda);padding-bottom:2px;
+  background:none;border-top:none;border-left:none;border-right:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;transition:all 0.2s;
+}
+.produto-btn:hover{color:var(--ouro);border-color:var(--ouro)}
+
+/* ===== CURITIBA ===== */
+#curitiba{background:var(--preto);border-top:1px solid var(--borda)}
+.curitiba-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-bottom:5rem}
+.curitiba-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--borda);margin-top:0;
+}
+.curitiba-card{
+  background:var(--preto-suave);
+  padding:2.5rem 2rem;
+  transition:background 0.3s;
+}
+.curitiba-card:hover{background:var(--preto-card)}
+.curitiba-icon{font-size:1.8rem;margin-bottom:1.2rem;display:block;opacity:0.85}
+.curitiba-card h3{font-size:1rem;color:var(--branco);margin-bottom:0.5rem;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400}
+.curitiba-card p{font-size:0.83rem;color:var(--cinza);line-height:1.7}
+.curitiba-stats{display:flex;gap:0;border-top:1px solid var(--borda)}
+.curitiba-stat{
+  flex:1;padding:2.5rem;border-right:1px solid var(--borda);text-align:center;
+}
+.curitiba-stat:last-child{border-right:none}
+.curitiba-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--ouro);display:block;line-height:1;font-weight:300}
+.curitiba-stat-label{font-size:0.78rem;color:var(--cinza);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.4rem;display:block}
+
+/* ===== SOBRE ===== */
+#sobre{background:var(--preto-suave);border-top:1px solid var(--borda)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.sobre-visual-area{position:relative}
+.sobre-logo-big{
+  width:100%;aspect-ratio:1;border-radius:50%;
+  background:var(--preto-card);
+  border:1px solid var(--borda);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;text-align:center;padding:3rem;
+  position:relative;max-width:380px;margin:0 auto;
+}
+.sobre-logo-big::before{
+  content:'';position:absolute;inset:-12px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.15);
+}
+.sobre-logo-big::after{
+  content:'';position:absolute;inset:-24px;border-radius:50%;
+  border:1px solid rgba(201,168,76,0.06);
+}
+.sobre-capivara{font-size:5rem;margin-bottom:1rem;display:block}
+.sobre-brand-big{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--branco);line-height:1}
+.sobre-brand-big em{font-style:italic;color:var(--ouro)}
+.sobre-souvenir-big{font-family:'Dancing Script',cursive;font-size:1.2rem;color:var(--ouro-claro);margin-top:0.3rem;display:block}
+.sobre-tags{display:flex;gap:0.5rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center}
+.sobre-tag{
+  font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid var(--borda);padding:0.3rem 0.6rem;color:var(--cinza);
+}
+.sobre-text p{color:var(--cinza-claro);font-size:0.95rem;margin-bottom:1.2rem;line-height:1.8}
+.sobre-text p:last-of-type{margin-bottom:2rem}
+.sobre-nums{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--borda);margin-bottom:2.5rem}
+.sobre-num{background:var(--preto);padding:1.5rem;text-align:center}
+.sobre-num-val{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--ouro);display:block}
+.sobre-num-lab{font-size:0.72rem;color:var(--cinza);text-transform:uppercase;letter-spacing:0.1em}
+
+/* ===== LOJAS ===== */
+#lojas{background:var(--preto);border-top:1px solid var(--borda)}
+.lojas-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--borda);margin-top:4rem}
+.loja-card{background:var(--preto-suave);padding:3rem}
+.loja-tag{
+  display:inline-block;font-size:0.65rem;letter-spacing:0.15em;
+  text-transform:uppercase;border:1px solid var(--ouro);
+  color:var(--ouro);padding:0.25rem 0.7rem;margin-bottom:1.5rem;
+}
+.loja-icon-big{font-size:2.5rem;margin-bottom:1.2rem;display:block}
+.loja-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--branco);margin-bottom:0.3rem}
+.loja-sub{font-size:0.82rem;color:var(--cinza);margin-bottom:2rem}
+.loja-info-list{list-style:none;margin-bottom:2rem}
+.loja-info-item{
+  display:flex;gap:1rem;padding:0.85rem 0;
+  border-bottom:1px solid var(--borda);font-size:0.85rem;
+}
+.loja-info-item:last-child{border-bottom:none}
+.loja-info-item-icon{color:var(--ouro);flex-shrink:0;width:16px;text-align:center;margin-top:2px}
+.loja-info-item-label{color:var(--cinza-claro);display:block}
+.loja-info-item-val{color:var(--cinza);font-size:0.8rem}
+
+/* ===== CONTATO ===== */
+#contato{background:var(--preto-suave);border-top:1px solid var(--borda)}
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;margin-top:4rem;align-items:start}
+.contato-canal{
+  display:flex;gap:1.2rem;align-items:center;
+  padding:1.5rem;background:var(--preto);border:1px solid var(--borda);
+  text-decoration:none;color:var(--branco);margin-bottom:1rem;
+  transition:all 0.25s;
+}
+.contato-canal:hover{border-color:var(--ouro);background:var(--preto-card)}
+.canal-icon{width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;background:var(--preto-card)}
+.contato-canal h3{font-family:'DM Sans',sans-serif;font-size:0.9rem;font-weight:500;margin-bottom:0.15rem;color:var(--branco)}
+.contato-canal p{font-size:0.8rem;color:var(--cinza)}
+.mapa-box{
+  background:var(--preto);border:1px solid var(--borda);
+  padding:3rem;text-align:center;
+}
+.mapa-capivara{font-size:4rem;margin-bottom:1rem;display:block;animation:balanco 4s ease-in-out infinite}
+@keyframes balanco{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.mapa-titulo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--branco);margin-bottom:0.4rem}
+.mapa-sub{font-size:0.8rem;color:var(--cinza);margin-bottom:2rem}
+.mapa-pins{display:flex;flex-direction:column;gap:0.75rem}
+.mapa-pin{
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0.85rem 1rem;background:var(--preto-card);border:1px solid var(--borda);
+  text-decoration:none;color:var(--branco);transition:border-color 0.2s;
+  font-size:0.83rem;
+}
+.mapa-pin:hover{border-color:var(--ouro)}
+.mapa-pin-dot{width:6px;height:6px;border-radius:50%;background:var(--ouro);flex-shrink:0}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--preto-card);
+  border-top:1px solid var(--borda);
+  padding:3rem 5%;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;
+}
+.footer-logo{text-decoration:none}
+.footer-logo-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--branco)}
+.footer-logo-name em{font-style:italic;color:var(--ouro)}
+.footer-logo-script{font-family:'Dancing Script',cursive;font-size:0.9rem;color:var(--ouro-claro);display:block;line-height:1}
+footer p{font-size:0.78rem;color:var(--cinza)}
+.footer-links{display:flex;gap:2rem;flex-wrap:wrap}
+.footer-links a{color:var(--cinza);text-decoration:none;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.footer-links a:hover{color:var(--ouro)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--preto-card);border:1px solid var(--borda);max-width:540px;width:100%;max-height:90vh;overflow-y:auto;animation:modalIn 0.3s ease;position:relative}
+@keyframes modalIn{from{opacity:0;transform:scale(0.97) translateY(16px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-img{height:280px;display:flex;align-items:center;justify-content:center;font-size:6rem;background:var(--preto);border-bottom:1px solid var(--borda)}
+.modal-body{padding:2rem}
+.modal-cat{font-size:0.7rem;font-weight:400;text-transform:uppercase;letter-spacing:0.15em;color:var(--ouro);margin-bottom:0.5rem}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--branco);margin-bottom:1rem;line-height:1.2}
+.modal-desc{color:var(--cinza-claro);font-size:0.88rem;line-height:1.8;margin-bottom:1.5rem}
+.modal-meta{background:var(--preto);border:1px solid var(--borda);padding:1rem 1.25rem;margin-bottom:1.5rem}
+.modal-meta-row{display:flex;justify-content:space-between;font-size:0.83rem;padding:0.4rem 0;border-bottom:1px solid var(--borda)}
+.modal-meta-row:last-child{border-bottom:none}
+.modal-meta-row span:first-child{color:var(--cinza)}
+.modal-meta-row span:last-child{color:var(--ouro-claro);font-family:'Cormorant Garamond',serif;font-size:1rem}
+.modal-actions{display:flex;gap:1rem}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--preto);border:1px solid var(--borda);
+  color:var(--cinza);width:32px;height:32px;cursor:pointer;
+  font-size:0.85rem;display:flex;align-items:center;justify-content:center;
+  transition:all 0.2s;
+}
+.modal-close:hover{color:var(--branco);border-color:var(--cinza)}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .curitiba-intro,.sobre-grid,.contato-grid{grid-template-columns:1fr}
+  .lojas-grid{grid-template-columns:1fr}
+  .curitiba-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .curitiba-stats{flex-direction:column}
+  .curitiba-stat{border-right:none;border-bottom:1px solid var(--borda)}
+}
+@media(max-width:600px){
+  section{padding:4rem 4%}
+  .curitiba-grid{grid-template-columns:1fr}
+  .sobre-nums{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-circle">🦫</div>
+    <div class="nav-logo-text">
+      Lily<span class="logo-amp">&amp;</span>Fabs
+      <span>Souvenir</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#catalogo">Catálogo</a></li>
+    <li><a href="#curitiba">Curitiba</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#lojas">Lojas</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="https://wa.me/5541999999999?text=Olá! Vi o site da Lily %26 Fabs e gostaria de saber mais." class="nav-wpp" target="_blank">WhatsApp</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+
+  <div class="hero-logo-area">
+    <div class="hero-logo-circle">🦫</div>
+  </div>
+
+  <div style="animation:fadeUp 1s ease 0.1s both">
+    <div class="hero-grupo">Grupo</div>
+    <div class="hero-brand">Lily<span class="logo-amp" style="font-size:0.85em">&amp;</span>Fabs</div>
+    <span class="hero-souvenir">Souvenir</span>
+  </div>
+
+  <p class="hero-tagline">
+    <strong>Leve Curitiba com você.</strong><br>
+    Leve o Paraná com você.
+  </p>
+
+  <div class="hero-btns">
+    <a href="#catalogo" class="btn btn-ouro">Ver catálogo</a>
+    <a href="https://wa.me/5541999999999?text=Olá! Gostaria de saber mais sobre os produtos da Lily %26 Fabs." class="btn btn-outline" target="_blank">💬 Falar no WhatsApp</a>
+  </div>
+
+  <div class="hero-stores">
+    <div class="hero-store">
+      <div class="hero-store-line"></div>
+      <span>Rua 24 Horas — Lojas 36 e 37</span>
+    </div>
+    <div class="hero-store">
+      <div class="hero-store-line"></div>
+      <span>Aeroporto Afonso Pena</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo">
+  <div class="cat-header">
+    <div>
+      <span class="section-label">Nossa Coleção</span>
+      <h2 class="section-heading">Catálogo de <em>Produtos</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--cinza);max-width:440px;font-size:0.9rem">Peças com a essência de Curitiba e do Paraná. Cada item carrega uma história desta cidade extraordinária.</p>
+    </div>
+  </div>
+
+  <div class="cat-filters">
+    <button class="cat-filter active" onclick="filterCat('todos',this)">Todos</button>
+    <button class="cat-filter" onclick="filterCat('capivaras',this)">Capivaras</button>
+    <button class="cat-filter" onclick="filterCat('canecas',this)">Canecas</button>
+    <button class="cat-filter" onclick="filterCat('chaveiros',this)">Chaveiros</button>
+    <button class="cat-filter" onclick="filterCat('imas',this)">Ímãs</button>
+    <button class="cat-filter" onclick="filterCat('artesanato',this)">Artesanato</button>
+    <button class="cat-filter" onclick="filterCat('presentes',this)">Presentes</button>
+  </div>
+
+  <div class="cat-grid" id="produtosGrid" style="margin-top:2rem"></div>
+</section>
+
+<!-- CURITIBA -->
+<section id="curitiba">
+  <div class="curitiba-intro">
+    <div class="fade-in">
+      <span class="section-label">Curitiba que inspira</span>
+      <h2 class="section-heading">A cidade que<br><em>vive em cada peça</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--cinza);font-size:0.9rem;line-height:1.9;margin-bottom:1.5rem">Curitiba não é só uma cidade. É uma experiência. Eleita referência mundial em sustentabilidade urbana, capital da araucária, das capivaras nos parques e de uma cultura única no Brasil.</p>
+      <p style="color:var(--cinza);font-size:0.9rem;line-height:1.9">Cada produto da Lily &amp; Fabs é uma janela para esse universo. Uma memória afetiva que você leva para qualquer lugar do mundo.</p>
+    </div>
+    <div class="curitiba-stats fade-in" style="flex-direction:column;border:1px solid var(--borda)">
+      <div class="curitiba-stat">
+        <span class="curitiba-stat-num">50+</span>
+        <span class="curitiba-stat-label">parques e bosques</span>
+      </div>
+      <div class="curitiba-stat">
+        <span class="curitiba-stat-num">1,9M</span>
+        <span class="curitiba-stat-label">habitantes</span>
+      </div>
+      <div class="curitiba-stat" style="border-right:none">
+        <span class="curitiba-stat-num">#1</span>
+        <span class="curitiba-stat-label">cidade mais sustentável</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="curitiba-grid">
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🌸</span>
+      <h3>Jardim Botânico</h3>
+      <p>Símbolo mais fotografado de Curitiba, com jardins à francesa e a icônica estufa de ferro art nouveau.</p>
+    </div>
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🎭</span>
+      <h3>Ópera de Arame</h3>
+      <p>Teatro único no mundo, construído dentro de uma antiga pedreira com estrutura de tubos metálicos.</p>
+    </div>
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🦫</span>
+      <h3>As Capivaras</h3>
+      <p>As famosas capivaras dos parques curitibanos viraram símbolo afetivo e cultural da cidade.</p>
+    </div>
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🌿</span>
+      <h3>Araucária</h3>
+      <p>A árvore símbolo do Paraná. O pinhão faz parte da culinária, da cultura e da identidade paranaense.</p>
+    </div>
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🕐</span>
+      <h3>Rua 24 Horas</h3>
+      <p>Galeria que nunca fecha. Espaço cultural, gastronômico e comercial único no coração da cidade.</p>
+    </div>
+    <div class="curitiba-card fade-in">
+      <span class="curitiba-icon">🚌</span>
+      <h3>Linha Turismo</h3>
+      <p>O jeito mais bonito de conhecer Curitiba: ônibus biarticulado pelos principais pontos turísticos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-visual-area fade-in">
+      <div class="sobre-logo-big">
+        <span class="sobre-capivara">🦫</span>
+        <div style="font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--cinza);margin-bottom:0.2rem">Grupo</div>
+        <div class="sobre-brand-big">Lily<span class="logo-amp">&amp;</span>Fabs</div>
+        <span class="sobre-souvenir-big">Souvenir</span>
+        <div class="sobre-tags">
+          <span class="sobre-tag">Leve Curitiba</span>
+          <span class="sobre-tag">Leve o Paraná</span>
+          <span class="sobre-tag">Rua 24H</span>
+          <span class="sobre-tag">Airport</span>
+        </div>
+      </div>
+    </div>
+    <div class="sobre-text fade-in">
+      <span class="section-label">Nossa história</span>
+      <h2 class="section-heading">Sobre a<br>Lily<span class="logo-amp">&amp;</span>Fabs</h2>
+      <div class="divider"></div>
+      <div class="sobre-nums">
+        <div class="sobre-num"><span class="sobre-num-val">2</span><span class="sobre-num-lab">lojas físicas</span></div>
+        <div class="sobre-num"><span class="sobre-num-val">18K</span><span class="sobre-num-lab">seguidores</span></div>
+        <div class="sobre-num"><span class="sobre-num-val">100+</span><span class="sobre-num-lab">produtos</span></div>
+        <div class="sobre-num"><span class="sobre-num-val">✈️</span><span class="sobre-num-lab">aeroporto</span></div>
+      </div>
+      <p>A Lily &amp; Fabs é uma loja curitibana de souvenires, artesanatos e presentes criativos inspirados em Curitiba e no Paraná — "Curitibanices, capivaras, souvenires e muito mais!"</p>
+      <p>Com produtos cheios de identidade local, das capivaras ao pinhão, do Jardim Botânico à Ópera de Arame, a marca conecta turistas e moradores com o que há de mais autêntico nesta cidade.</p>
+      <p>Da Rua 24 Horas ao Aeroporto Afonso Pena — para que sua última memória de Curitiba seja inesquecível.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="https://wa.me/5541999999999?text=Olá! Gostaria de saber mais sobre os produtos da Lily %26 Fabs!" class="btn btn-ouro" target="_blank">Fale conosco</a>
+        <a href="https://instagram.com/lilyefabs" class="btn btn-outline" target="_blank">@lilyefabs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOJAS -->
+<section id="lojas">
+  <span class="section-label">Onde nos encontrar</span>
+  <h2 class="section-heading">Nossas <em>Lojas</em></h2>
+  <div class="divider"></div>
+  <div class="lojas-grid">
+    <div class="loja-card fade-in">
+      <span class="loja-tag">Loja 01 — Centro</span>
+      <span class="loja-icon-big">🕐</span>
+      <div class="loja-title">Rua 24 Horas</div>
+      <div class="loja-sub">Curitiba, Paraná — Lojas 36 e 37</div>
+      <ul class="loja-info-list">
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">📍</span>
+          <div><span class="loja-info-item-label">Endereço</span><span class="loja-info-item-val">Rua das Flores, 271 — Centro, Curitiba</span></div>
+        </li>
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">🕒</span>
+          <div><span class="loja-info-item-label">Horário</span><span class="loja-info-item-val">Segunda a Sábado: 09h às 21h</span></div>
+        </li>
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">🏪</span>
+          <div><span class="loja-info-item-label">Referência</span><span class="loja-info-item-val">Lojas 36 e 37 — Galeria Rua 24 Horas</span></div>
+        </li>
+      </ul>
+      <a href="https://maps.google.com/?q=Rua+24+Horas+Curitiba" class="btn btn-outline" target="_blank" style="width:100%;justify-content:center">Como chegar</a>
+    </div>
+    <div class="loja-card fade-in">
+      <span class="loja-tag">Loja 02 — Aeroporto</span>
+      <span class="loja-icon-big">✈️</span>
+      <div class="loja-title">Aeroporto Afonso Pena</div>
+      <div class="loja-sub">São José dos Pinhais, Paraná</div>
+      <ul class="loja-info-list">
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">📍</span>
+          <div><span class="loja-info-item-label">Localização</span><span class="loja-info-item-val">Aeroporto Internacional Afonso Pena — SJP</span></div>
+        </li>
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">🛫</span>
+          <div><span class="loja-info-item-label">Acesso</span><span class="loja-info-item-val">Sala de embarque — área restrita</span></div>
+        </li>
+        <li class="loja-info-item">
+          <span class="loja-info-item-icon">ℹ️</span>
+          <div><span class="loja-info-item-label">Dica</span><span class="loja-info-item-val">Última chance de levar Curitiba com você!</span></div>
+        </li>
+      </ul>
+      <a href="https://maps.google.com/?q=Aeroporto+Internacional+Afonso+Pena+São+José+dos+Pinhais" class="btn btn-ouro" target="_blank" style="width:100%;justify-content:center">Como chegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <span class="section-label">Fale com a gente</span>
+  <h2 class="section-heading">Contato</h2>
+  <div class="divider"></div>
+  <div class="contato-grid">
+    <div>
+      <p style="color:var(--cinza);font-size:0.9rem;margin-bottom:2rem;line-height:1.9">Quer saber mais sobre algum produto? Tem uma encomenda especial? Chamar no WhatsApp é o jeito mais rápido de falar com a gente.</p>
+      <a href="https://wa.me/5541999999999?text=Olá! Vi o site da Lily %26 Fabs e gostaria de saber mais sobre os produtos." class="contato-canal" target="_blank">
+        <div class="canal-icon">💬</div>
+        <div><h3>WhatsApp</h3><p>Atendimento rápido • Seg a Sáb</p></div>
+      </a>
+      <a href="https://instagram.com/lilyefabs" class="contato-canal" target="_blank">
+        <div class="canal-icon">📸</div>
+        <div><h3>@lilyefabs</h3><p>Novidades, lançamentos e bastidores</p></div>
+      </a>
+      <a href="https://instagram.com/lilyefabs" class="contato-canal" target="_blank">
+        <div class="canal-icon">🦫</div>
+        <div><h3>Vi a Capivara Kombina</h3><p>Conteúdos e destaques da loja</p></div>
+      </a>
+      <div style="margin-top:2rem">
+        <a href="https://wa.me/5541999999999?text=Olá! Gostaria de encomendar um produto personalizado!" class="btn btn-wpp" target="_blank">💬 Chamar no WhatsApp</a>
+      </div>
+    </div>
+    <div class="mapa-box">
+      <span class="mapa-capivara">🦫</span>
+      <div class="mapa-titulo">Curitiba, Paraná</div>
+      <div class="mapa-sub">Duas unidades para te atender</div>
+      <div class="mapa-pins">
+        <a href="https://maps.google.com/?q=Rua+24+Horas+Curitiba" class="mapa-pin" target="_blank">
+          <div class="mapa-pin-dot"></div>
+          <div><div style="font-weight:500;font-size:0.85rem">Rua 24 Horas</div><div style="font-size:0.75rem;color:var(--cinza)">Lojas 36 e 37 — Curitiba</div></div>
+        </a>
+        <a href="https://maps.google.com/?q=Aeroporto+Afonso+Pena+São+José+dos+Pinhais" class="mapa-pin" target="_blank">
+          <div class="mapa-pin-dot"></div>
+          <div><div style="font-weight:500;font-size:0.85rem">Aeroporto Afonso Pena</div><div style="font-size:0.75rem;color:var(--cinza)">Sala de embarque — São José dos Pinhais</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#home" class="footer-logo">
+    <div class="footer-logo-name">Lily<span class="logo-amp">&amp;</span>Fabs</div>
+    <span class="footer-logo-script">Souvenir</span>
+  </a>
+  <div class="footer-links">
+    <a href="#catalogo">Catálogo</a>
+    <a href="#curitiba">Curitiba</a>
+    <a href="#lojas">Lojas</a>
+    <a href="https://instagram.com/lilyefabs" target="_blank">Instagram</a>
+    <a href="https://wa.me/5541999999999" target="_blank">WhatsApp</a>
+  </div>
+  <p>© 2025 Lily &amp; Fabs. Leve Curitiba com você ♥</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-body">
+      <div class="modal-cat" id="modalCat"></div>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-meta">
+        <div class="modal-meta-row"><span>Disponibilidade</span><span id="modalDisp"></span></div>
+        <div class="modal-meta-row"><span>Encontre em</span><span id="modalLoja"></span></div>
+        <div class="modal-meta-row"><span>Preço</span><span id="modalPreco"></span></div>
+      </div>
+      <div class="modal-actions">
+        <a href="#" class="btn btn-wpp" id="modalWpp" target="_blank">💬 Tenho interesse</a>
+        <button class="btn btn-ghost" onclick="closeModalDirect()">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const produtos=[
+  {id:1,emoji:'🦫',nome:'Capivara de Pelúcia Curitibana',cat:'capivaras',catLabel:'Capivaras',desc:'A capivara mais fofa de Curitiba! Pelúcia macia com detalhe bordado de pinhão. O presente perfeito para levar a memória dos parques curitibanos.',preco:'R$ 65,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:2,emoji:'🦫',nome:'Chaveiro Capivara Artesanal',cat:'capivaras',catLabel:'Capivaras',desc:'Chaveiro em resina com mini capivara pintada à mão. Cada peça é única, feita com o charme do artesanato paranaense.',preco:'R$ 18,00',lojas:'Rua 24 Horas',disp:'Disponível'},
+  {id:3,emoji:'🦫',nome:'Camiseta Capivara Curitibana',cat:'capivaras',catLabel:'Capivaras',desc:'Camiseta 100% algodão com ilustração exclusiva de capivara estilizada. Disponível em P, M, G e GG.',preco:'R$ 79,00',lojas:'Rua 24 Horas',disp:'Consulte disponibilidade'},
+  {id:4,emoji:'☕',nome:'Caneca Jardim Botânico',cat:'canecas',catLabel:'Canecas',desc:'Caneca de porcelana com ilustração aquarelada do icônico Jardim Botânico de Curitiba. Capacidade 350ml.',preco:'R$ 45,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:5,emoji:'☕',nome:'Caneca Curitiba Skyline',cat:'canecas',catLabel:'Canecas',desc:'Skyline minimalista de Curitiba. Porcelana premium com acabamento acetinado. Presente clássico.',preco:'R$ 48,00',lojas:'Aeroporto Afonso Pena',disp:'Disponível'},
+  {id:6,emoji:'☕',nome:'Xícara Capivara',cat:'canecas',catLabel:'Canecas',desc:'Xícara de porcelana com capivara ilustrada. Para tomar café com muito amor curitibano.',preco:'R$ 38,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:7,emoji:'🔑',nome:'Chaveiro Araucária',cat:'chaveiros',catLabel:'Chaveiros',desc:'Araucária esculpida em madeira nativa do Paraná. Peça artesanal com verniz de proteção.',preco:'R$ 22,00',lojas:'Rua 24 Horas',disp:'Disponível'},
+  {id:8,emoji:'🧲',nome:'Ímã Ópera de Arame',cat:'imas',catLabel:'Ímãs',desc:'Ímã de geladeira com foto artística da Ópera de Arame. Acabamento resinado de alta qualidade.',preco:'R$ 14,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:9,emoji:'🧲',nome:'Kit Ímãs Curitiba',cat:'imas',catLabel:'Ímãs',desc:'Kit com 5 ímãs dos principais pontos turísticos: Jardim Botânico, Ópera de Arame, Linha Turismo, Rua 24 Horas e Capivara.',preco:'R$ 55,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:10,emoji:'🎨',nome:'Quadrinho Curitiba em Aquarela',cat:'artesanato',catLabel:'Artesanato',desc:'Ilustração artesanal pintada à mão em aquarela. Cenas de Curitiba feitas por artistas locais. Emoldurado 15x20cm.',preco:'R$ 120,00',lojas:'Rua 24 Horas',disp:'Disponível'},
+  {id:11,emoji:'🌿',nome:'Pinhão em Resina Decorativo',cat:'artesanato',catLabel:'Artesanato',desc:'Pinhão da araucária preservado em resina transparente. Peça decorativa única que representa o Paraná.',preco:'R$ 35,00',lojas:'Rua 24 Horas',disp:'Disponível'},
+  {id:12,emoji:'🎁',nome:'Kit Presente Curitiba',cat:'presentes',catLabel:'Presentes',desc:'Kit presente com caneca, chaveiro e ímã temáticos. Embalagem artesanal com papel reciclado e fita.',preco:'R$ 98,00',lojas:'Rua 24 Horas e Aeroporto',disp:'Disponível'},
+  {id:13,emoji:'🎁',nome:'Produto Personalizado',cat:'presentes',catLabel:'Presentes',desc:'Crie seu presente com nome, data ou mensagem especial. Canecas, chaveiros e muito mais. Fale conosco!',preco:'Sob consulta',lojas:'Rua 24 Horas',disp:'Sob encomenda'},
+];
+
+let catAtiva='todos';
+
+function renderProdutos(){
+  const grid=document.getElementById('produtosGrid');
+  const f=catAtiva==='todos'?produtos:produtos.filter(p=>p.cat===catAtiva);
+  grid.innerHTML=f.map(p=>`
+    <div class="produto-card fade-in" onclick="openModal(${p.id})">
+      <div class="produto-img">${p.emoji}</div>
+      <div class="produto-info">
+        <div class="produto-cat">${p.catLabel}</div>
+        <div class="produto-nome">${p.nome}</div>
+        <div class="produto-desc">${p.desc.substring(0,75)}...</div>
+        <div class="produto-footer">
+          <span class="produto-preco">${p.preco}</span>
+          <button class="produto-btn">Ver mais</button>
+        </div>
+      </div>
+    </div>`).join('');
+  observeFadeIns();
+}
+
+function filterCat(cat,btn){
+  catAtiva=cat;
+  document.querySelectorAll('.cat-filter').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProdutos();
+}
+
+function openModal(id){
+  const p=produtos.find(x=>x.id===id);if(!p)return;
+  document.getElementById('modalImg').textContent=p.emoji;
+  document.getElementById('modalImg').style.fontSize='6rem';
+  document.getElementById('modalCat').textContent=p.catLabel;
+  document.getElementById('modalTitle').textContent=p.nome;
+  document.getElementById('modalDesc').textContent=p.desc;
+  document.getElementById('modalDisp').textContent=p.disp;
+  document.getElementById('modalLoja').textContent=p.lojas;
+  document.getElementById('modalPreco').textContent=p.preco;
+  const msg=encodeURIComponent(`Olá! Vi o produto "${p.nome}" no site da Lily & Fabs e tenho interesse. Pode me dar mais informações?`);
+  document.getElementById('modalWpp').href=`https://wa.me/5541999999999?text=${msg}`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){if(e.target===document.getElementById('modalOverlay'))closeModalDirect();}
+function closeModalDirect(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+
+function observeFadeIns(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect()});
+renderProdutos();
+observeFadeIns();
+</script>
+</body>
+</html>
